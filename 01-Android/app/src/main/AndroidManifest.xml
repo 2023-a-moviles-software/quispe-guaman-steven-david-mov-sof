@@ -13,12 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovilesSoftware2023A"
         tools:targetApi="31">
-
+        <activity
+            android:name=".BlistView"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".AACicloVida"
             android:exported="false"
             android:label="@string/title_activity_aaciclo_vida"
-            android:theme="@style/Theme.MovilesSoftware2023A.NoActionBar">
+            android:theme="@style/Base.Theme.MovilesSoftware2023A">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

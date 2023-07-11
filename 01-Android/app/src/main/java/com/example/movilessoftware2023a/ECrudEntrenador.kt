@@ -16,13 +16,18 @@ class ECrudEntrenador : AppCompatActivity() {
                 val id = findViewById<EditText>(R.id.input_id)
                 val nombre = findViewById<EditText>(R.id.input_nombre)
                 val descripcion = findViewById<EditText>(R.id.input_descripcion)
-                val entrenador = EBaseDeDatos.tablaEntrenador!!
-                    .consultarEntrenadorPorId(
-                        id.text.toString().toInt()
-                    )
-                id.setText(entrenador.id.toString())
-                nombre.setText(entrenador.nombre)
-                descripcion.setText(entrenador.descripcion)
+                val idInt = id.text.toString().toInt()
+                if(EBaseDeDatos.tablaEntrenador != null && idInt != null){
+                    val entrenador = EBaseDeDatos.tablaEntrenador
+                        ?.consultarEntrenadorPorId(
+                            idInt
+                        )
+                    if(entrenador != null){
+                        id.setText(entrenador.id.toString())
+                        nombre.setText(entrenador.nombre)
+                        descripcion.setText(entrenador.descripcion)
+                    }
+                }
             }
 
         val botonCrearBDD = findViewById<Button>(R.id.btn_crear_bdd)

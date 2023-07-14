@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "869080891822",
+    "project_id": "examenib-15cb2",
+    "storage_bucket": "examenib-15cb2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869080891822:android:5963148b6a2ece5e3a083f",
+        "android_client_info": {
+          "package_name": "com.example.marca_laptop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869080891822-50nhdgcpe6783l2ou4iirk2llfe6rl9u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfQpP9miXje2bWJt5T90dl0nrB-6bIlNs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869080891822-50nhdgcpe6783l2ou4iirk2llfe6rl9u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

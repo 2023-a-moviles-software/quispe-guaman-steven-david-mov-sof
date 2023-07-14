@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Marca_Laptop</string>
+    <string name="title_activity_main2">MainActivity2</string>
+    <string name="switch_servicio_tecnico">Servicio Técnico: </string>
+    <string name="switch_en_produccion">En producción: </string>
+</resources>

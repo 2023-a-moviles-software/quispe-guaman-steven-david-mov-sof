@@ -22,6 +22,10 @@ import com.example.marca_laptop.BbaseDatosMemoria.Companion.arregloBLaptop
 import java.time.LocalDate
 
 class LaptopListView : AppCompatActivity() {
+    companion object{
+        lateinit var adaptador: ArrayAdapter<BLaptop>
+    }
+
     //Variables
     var idItemSeleccionado = -1
     var laptopPorMarca = ArrayList<BLaptop>()
@@ -55,7 +59,7 @@ class LaptopListView : AppCompatActivity() {
                                         BLaptop(arreglo.size+1,modelo,idMarcaSeleccionada,precio.toDouble(),
                                             LocalDate.parse(fechaLanzamiento), enProduccion.toBoolean())
                                     )
-                           // laptopPorMarca = obtenerLaptopPorMarca(idMarcaSeleccionada) //Actualiza las laptops de esa marca
+                           laptopPorMarca = obtenerLaptopPorMarca(idMarcaSeleccionada) //Actualiza las laptops de esa marca
                         }else {
                             arreglo[idLaptopSeleccionada!!].modelo = modelo
                             arreglo[idLaptopSeleccionada!!].precio = precio.toDouble()
@@ -63,8 +67,7 @@ class LaptopListView : AppCompatActivity() {
                             arreglo[idLaptopSeleccionada!!].enProduccion = enProduccion.toBoolean()
                         }
                         //Actualización de la lista en pantalla
-                        laptopPorMarca = obtenerLaptopPorMarca(idMarcaSeleccionada)
-                        val adaptador = findViewById<ListView>(R.id.lv_list_laptop).adapter as ArrayAdapter<BLaptop>
+                        adaptador = findViewById<ListView>(R.id.lv_list_laptop).adapter as ArrayAdapter<BLaptop>
                         adaptador.notifyDataSetChanged()
                     }
                 }
@@ -78,14 +81,12 @@ class LaptopListView : AppCompatActivity() {
         setContentView(R.layout.activity_laptop_list_view)
         //Parametros del intent
         idMarcaSeleccionada = intent.getIntExtra("idMarca", 1);
-        //Obtencion de laptops por marca
-        laptopPorMarca = obtenerLaptopPorMarca(idMarcaSeleccionada)
         //Adaptador
         val listView = findViewById<ListView>(R.id.lv_list_laptop)
-        val adaptador = ArrayAdapter(
+        adaptador = ArrayAdapter(
             this,   //Contexto
             android.R.layout.simple_list_item_1,
-            laptopPorMarca
+            obtenerLaptopPorMarca(idMarcaSeleccionada)
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
@@ -146,6 +147,7 @@ class LaptopListView : AppCompatActivity() {
     //Clasificar laptop por id
     @RequiresApi(Build.VERSION_CODES.O)
     fun obtenerLaptopPorMarca(idMarca: Int): ArrayList<BLaptop> {
+        laptopPorMarca.clear()
         arreglo.forEach { laptop: BLaptop ->
             if(laptop.idMarca == idMarca){
                 laptopPorMarca.add(laptop)

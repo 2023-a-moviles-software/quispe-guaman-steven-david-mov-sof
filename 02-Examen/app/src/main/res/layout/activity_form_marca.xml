@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="44dp"
         android:text="Registrar marca"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@+id/txt_nombre_marca"
         app:layout_constraintEnd_toEndOf="@+id/txt_nombre_marca"
         app:layout_constraintHorizontal_bias="0.39"

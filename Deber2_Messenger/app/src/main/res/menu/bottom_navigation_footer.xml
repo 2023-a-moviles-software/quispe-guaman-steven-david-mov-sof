@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/opcion_chats"
+        android:icon="@drawable/chats"
+        android:title="Chats" />
+
+    <item
+        android:id="@+id/opcion_llamadas"
+        android:icon="@drawable/llamadas"
+        android:title="LLamadas" />
+
+    <item
+        android:id="@+id/opcion_personas"
+        android:icon="@drawable/personas"
+        android:title="Personas" />
+
+    <item
+        android:id="@+id/opcion_historias"
+        android:icon="@drawable/historias"
+        android:title="Historias" />
+
+</menu>

@@ -86,4 +86,25 @@
         app:layout_constraintHorizontal_bias="0.451"
         app:layout_constraintStart_toEndOf="@+id/btn_ir_intent_explicito" />
 
+    <Button
+        android:id="@+id/btn_google_maps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="G Maps"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+    <Button
+        android:id="@+id/btn_intent_firebase_ui"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="UI AUTH"
+        app:layout_constraintEnd_toEndOf="@+id/btn_google_maps"
+        app:layout_constraintStart_toStartOf="@+id/btn_google_maps"
+        app:layout_constraintTop_toBottomOf="@+id/btn_google_maps" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

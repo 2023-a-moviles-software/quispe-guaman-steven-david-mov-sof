@@ -75,6 +75,17 @@ class MainActivity : AppCompatActivity() {
                 irActividad(FRecyclerView::class.java)
             }
 
+        val botonGoogleMaps = findViewById<Button>(R.id.btn_google_maps)
+        botonGoogleMaps
+            .setOnClickListener {
+                irActividad(GGoogleMaps::class.java)
+            }
+
+        val botonUiAuth = findViewById<Button>(R.id.btn_intent_firebase_ui)
+        botonUiAuth
+            .setOnClickListener {
+                irActividad(HFirebaseUIAuth::class.java)
+            }
     }
 
     fun irActividad(

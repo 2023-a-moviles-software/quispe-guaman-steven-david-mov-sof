@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_chat"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical"
+        android:background="#000000">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="6dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+            <ImageView
+                android:id="@+id/imagen_chat"
+                android:layout_width="85dp"
+                android:layout_height="82dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/chat1"
+                android:background="@drawable/rounded_image_mask"
+                android:scaleType="centerCrop"
+                android:adjustViewBounds="true"
+                android:layout_alignParentLeft="true"/>
+
+            <LinearLayout
+                android:id="@+id/descripcion_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@id/imagen_chat"
+                android:orientation="vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/imagen_chat">
+                <TextView
+                    android:id="@+id/nombre_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Nombre usuario"
+                    android:textSize="18dp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/mensaje_chat"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mensaje ......"
+                    android:textSize="15dp"/>
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/check"
+                android:layout_width="30dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="320dp"
+                android:layout_marginTop="25dp"
+                app:srcCompat="@drawable/check"
+                app:tint="#0000ff"
+                android:orientation="vertical" />
+        </RelativeLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

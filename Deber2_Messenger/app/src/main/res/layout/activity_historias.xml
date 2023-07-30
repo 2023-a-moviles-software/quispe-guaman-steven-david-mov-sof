@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
+    android:backgroundTint="#000000"
     tools:context=".Historias">
 
 
@@ -27,6 +29,8 @@
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
                 android:orientation="horizontal">
 
                 <LinearLayout
@@ -65,9 +69,9 @@
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:id="@+id/nv_footer_historias"
+        android:id="@+id/coordinatorLayout"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="80dp"
         android:background="#000000"
         android:backgroundTint="#000000"
         android:paddingLeft="25dp"
@@ -83,7 +87,6 @@
             android:gravity="center"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
-
             app:backgroundTint="#000000">
 
             <LinearLayout
@@ -103,26 +106,44 @@
 
                         <ImageView
                             android:id="@+id/ver_Chats"
-                            android:layout_width="match_parent"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            app:srcCompat="@drawable/chats"
+                            app:tint="#ffffff"
+                            android:title="Chats"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:title="Chats"
-                            app:srcCompat="@drawable/chats" />
+                            android:text="Chats"
+                            android:textColor="#ffffff"
+                            android:layout_marginLeft="8dp"/>
+
+
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/Llamadas"
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginLeft="2dp"
+                            app:tint="#ffffff"
                             android:title="Llamadas"
                             app:srcCompat="@drawable/llamadas" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Llamadas"
+                            android:textColor="#ffffff"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -134,27 +155,40 @@
 
                         <ImageView
                             android:id="@+id/Personas"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="1dp"
+                            android:layout_marginStart="2dp"
+                            app:tint="#ffffff"
                             android:layout_weight="1"
                             android:title="Personas"
                             app:srcCompat="@drawable/personas" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Personas"
+                            android:textColor="#ffffff"/>
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-
                         android:orientation="vertical">
 
                         <ImageView
                             android:id="@+id/ver_historias"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_width="50dp"
+                            android:layout_height="35dp"
+                            android:layout_marginTop="5dp"
+                            app:tint="#00aae4"
                             android:layout_weight="1"
                             android:title="Historias"
                             app:srcCompat="@drawable/historias" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Historias"
+                            android:textColor="#00aae4"/>
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -164,12 +198,12 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_historias"
-        android:layout_width="418dp"
-        android:layout_height="604dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="415dp"
+        android:layout_height="577dp"
+        android:layout_marginTop="76dp"
         android:background="#000000"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/MenuSuperior" />
 </androidx.constraintlayout.widget.ConstraintLayout>

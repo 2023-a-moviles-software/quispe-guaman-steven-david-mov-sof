@@ -168,6 +168,7 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:textColor="#0000ff"
                         android:orientation="vertical">
 
                         <ImageView
@@ -176,14 +177,14 @@
                             android:layout_height="35dp"
                             android:layout_marginTop="8dp"
                             app:srcCompat="@drawable/chats"
-                            app:tint="#ffffff"
+                            app:tint="#00aae4"
                             android:title="Chats"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Chats"
-                            android:textColor="#ffffff"
+                            android:textColor="#00aae4"
                             android:layout_marginLeft="8dp"/>
 
 
@@ -265,7 +266,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chats"
-        android:layout_width="415dp"
+        android:layout_width="411dp"
         android:layout_height="521dp"
         android:layout_marginStart="1dp"
         android:layout_marginEnd="1dp"

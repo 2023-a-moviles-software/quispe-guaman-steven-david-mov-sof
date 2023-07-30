@@ -42,8 +42,8 @@ class ChatAdaptador (
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val chatActual = this.lista[position]
-        holder.nombreChat.text =  chatActual.nombreUsuario + "\t"+  chatActual.fecha
-        holder.mensajeChat.text = chatActual.mensaje
+        holder.nombreChat.text = chatActual.nombreUsuario
+        holder.mensajeChat.text = chatActual.mensaje + chatActual.fecha
 
         //Cambio de imagen
         val drawableResourceId = holder.itemView.context.resources.getIdentifier(chatActual.nombreImagenPerfil

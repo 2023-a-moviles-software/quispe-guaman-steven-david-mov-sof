@@ -31,17 +31,10 @@ class Historias : AppCompatActivity() {
         val recyclerView = findViewById<RecyclerView>(
             R.id.rv_historias
         )
-        val adaptador = HistoriaAdaptador(
-            this,
-            historias,
-            recyclerView
-        )
-        recyclerView.adapter = adaptador
-        recyclerView.itemAnimator = androidx.recyclerview.widget
-            .DefaultItemAnimator()
-        recyclerView.layoutManager = androidx.recyclerview.widget
-            .LinearLayoutManager(this)
-        adaptador.notifyDataSetChanged()
+        recyclerView.layoutManager = androidx.recyclerview.widget.
+        GridLayoutManager(this, 2)
+        recyclerView.adapter = HistoriaAdaptador(this, historias, recyclerView)
+        
     }
 
 }

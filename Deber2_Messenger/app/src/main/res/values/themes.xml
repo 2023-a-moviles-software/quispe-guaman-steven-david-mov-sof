@@ -6,4 +6,8 @@
     </style>
 
     <style name="Theme.Deber2_Messenger" parent="Base.Theme.Deber2_Messenger" />
+    <style name="roundedImageStyle" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
 </resources>

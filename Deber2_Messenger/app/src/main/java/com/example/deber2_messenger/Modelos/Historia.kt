@@ -10,7 +10,7 @@ class Historia (
         init {
             arregloHistorias
                 .add(
-                    Historia("Maria Perez",  "chat1", "historia1")
+                    Historia("Maria Perez",  "chat1", "historia6")
                 )
             arregloHistorias
                 .add(
@@ -24,7 +24,14 @@ class Historia (
                 .add(
                     Historia("Marco Rojas",  "chat4", "historia4")
                 )
-
+            arregloHistorias
+                .add(
+                    Historia("Hernán Reyes",  "chat3", "historia5")
+                )
+            arregloHistorias
+                .add(
+                    Historia("Jhon Narvaez",  "chat6", "historia1")
+                )
         }
     }
 

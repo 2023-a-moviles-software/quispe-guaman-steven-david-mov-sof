@@ -33,7 +33,7 @@ class LaptopListView : AppCompatActivity() {
     var idMarcaSeleccionada = -1
 
     @RequiresApi(Build.VERSION_CODES.O)
-    var arreglo = BbaseDatosMemoria.arregloBLaptop
+    var arreglo = BaseDeDatos.tablaLaptop?.obtenerTodasLasLaptops()?: emptyList()
 
     @RequiresApi(Build.VERSION_CODES.O)
     val callbackContenidoIntentExlicito =
@@ -54,17 +54,13 @@ class LaptopListView : AppCompatActivity() {
                     idLaptopSeleccionada = data?.getIntExtra("idLaptopSeleccionada",-1)
                     if(modelo != null && precio != null && fechaLanzamiento != null && enProduccion !=null){
                         if(opcion != "MODIFICAR"){
-                                BbaseDatosMemoria.arregloBLaptop
-                                    .add(
-                                        BLaptop(arreglo.size+1,modelo,idMarcaSeleccionada,precio.toDouble(),
-                                            LocalDate.parse(fechaLanzamiento), enProduccion.toBoolean())
-                                    )
+                                BaseDeDatos.tablaLaptop?.crearLaptop(modelo,idMarcaSeleccionada,precio.toDouble(),
+                                            fechaLanzamiento, enProduccion)
+
                            laptopPorMarca = obtenerLaptopPorMarca(idMarcaSeleccionada) //Actualiza las laptops de esa marca
                         }else {
-                            arreglo[idLaptopSeleccionada!!].modelo = modelo
-                            arreglo[idLaptopSeleccionada!!].precio = precio.toDouble()
-                            arreglo[idLaptopSeleccionada!!].fechaLanzamiento = LocalDate.parse(fechaLanzamiento)
-                            arreglo[idLaptopSeleccionada!!].enProduccion = enProduccion.toBoolean()
+                            BaseDeDatos.tablaLaptop?.actualizarLaptop(modelo,precio.toDouble(),
+                                fechaLanzamiento, enProduccion, idLaptopSeleccionada!!)
                         }
                         //Actualización de la lista en pantalla
                         adaptador = findViewById<ListView>(R.id.lv_list_laptop).adapter as ArrayAdapter<BLaptop>
@@ -81,6 +77,13 @@ class LaptopListView : AppCompatActivity() {
         setContentView(R.layout.activity_laptop_list_view)
         //Parametros del intent
         idMarcaSeleccionada = intent.getIntExtra("idMarca", 1);
+        //Crear primeras laptops
+        if (arreglo.isEmpty()){
+            BaseDeDatos.tablaLaptop?.crearLaptop("VivoBook",1,750.12, "2018-12-01", "true")
+            BaseDeDatos.tablaLaptop?.crearLaptop("ROG G15",1,1200.99, "2020-01-01", "true")
+            BaseDeDatos.tablaLaptop?.crearLaptop("Thin GF63",2,1100.99, "2021-01-01", "true")
+            BaseDeDatos.tablaLaptop?.crearLaptop("Thin GF65",2,1300.99, "2022-01-01", "true")
+        }
         //Adaptador
         val listView = findViewById<ListView>(R.id.lv_list_laptop)
         adaptador = ArrayAdapter(
@@ -136,23 +139,13 @@ class LaptopListView : AppCompatActivity() {
     //Obtener nombre marca
     @RequiresApi(Build.VERSION_CODES.O)
     fun obtenerNombreMarca(idMarca: Int): String{
-        var arregloMarca = BbaseDatosMemoria.arregloBMarca
-        arregloMarca.forEach{marca: BMarca ->
-            if(marca.idMarca == idMarca){
-                return marca.nombre
-            }
-        }
-        return ""
+        return BaseDeDatos.tablaMarca?.consultarNombreMarcaPorID(idMarca)?: ""
     }
     //Clasificar laptop por id
     @RequiresApi(Build.VERSION_CODES.O)
     fun obtenerLaptopPorMarca(idMarca: Int): ArrayList<BLaptop> {
         laptopPorMarca.clear()
-        arreglo.forEach { laptop: BLaptop ->
-            if(laptop.idMarca == idMarca){
-                laptopPorMarca.add(laptop)
-            }
-        }
+        laptopPorMarca = BaseDeDatos.tablaLaptop?.consultarLaptopPorIDMarca(idMarca) as ArrayList<BLaptop>
         return laptopPorMarca
     }
 
@@ -167,7 +160,7 @@ class LaptopListView : AppCompatActivity() {
             DialogInterface.OnClickListener { //Callback
                     dialog, which ->
                 //Eliminar marca seleccionada
-                idLaptopSeleccionada?.let { arreglo.removeAt(it) }
+                BaseDeDatos.tablaLaptop?.eliminarLaptop(idLaptopSeleccionada!!)
                 laptopPorMarca.removeAt(idItemSeleccionado)
                 //Actualización de la lista en pantalla
                 val adaptador = findViewById<ListView>(R.id.lv_list_laptop).adapter as ArrayAdapter<BLaptop>
@@ -197,7 +190,7 @@ class LaptopListView : AppCompatActivity() {
     ){
         val intentExplicito = Intent(this, clase)
         intentExplicito.putExtra("opcion","MODIFICAR")  //Operacion CRUD a realizar
-        intentExplicito.putExtra("modeloLaptop", arreglo[idLaptopSeleccionada!!].modelo)
+        intentExplicito.putExtra("modeloLaptop", BaseDeDatos.tablaLaptop?.consultarLaptopPorID(idLaptopSeleccionada!!)?.modelo)
         intentExplicito.putExtra("idLaptopSeleccionada", idLaptopSeleccionada)
         intentExplicito.putExtra("idMarca", intent.getIntExtra("idMarca", 1) )
         //Enviar parametros

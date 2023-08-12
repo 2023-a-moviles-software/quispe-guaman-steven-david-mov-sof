@@ -54,11 +54,12 @@ class FormLaptop : AppCompatActivity() {
     fun comprobarOpcion(opcion: String?){
         if (opcion == "MODIFICAR"){
             val modeloLaptop = intent.getStringExtra("modeloLaptop")
+            val laptopEditar = BaseDeDatos.tablaLaptop?.consultarLaptopPorID(idLaptopSeleccionada)
             findViewById<TextView>(R.id.txt_form_laptop).setText("Editar laptop ${modeloLaptop}")
-            findViewById<EditText>(R.id.txt_modelo).setText(BbaseDatosMemoria.arregloBLaptop[idLaptopSeleccionada].modelo)
-            findViewById<EditText>(R.id.txt_precio).setText(BbaseDatosMemoria.arregloBLaptop[idLaptopSeleccionada].precio.toString())
-            findViewById<EditText>(R.id.txt_fecha_lanzamiento).setText(BbaseDatosMemoria.arregloBLaptop[idLaptopSeleccionada].fechaLanzamiento.toString())
-            val sw_enProduccion = BbaseDatosMemoria.arregloBLaptop[idLaptopSeleccionada].enProduccion.toString()
+            findViewById<EditText>(R.id.txt_modelo).setText(laptopEditar?.modelo)
+            findViewById<EditText>(R.id.txt_precio).setText(laptopEditar?.precio.toString())
+            findViewById<EditText>(R.id.txt_fecha_lanzamiento).setText(laptopEditar?.fechaLanzamiento.toString())
+            val sw_enProduccion = laptopEditar?.enProduccion.toString()
             if (sw_enProduccion.toBoolean() == true){
                 findViewById<Switch>(R.id.sw_en_produccion).isChecked = true
             }

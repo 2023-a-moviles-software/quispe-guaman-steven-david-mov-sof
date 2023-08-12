@@ -58,14 +58,15 @@ class FormMarca : AppCompatActivity() {
     fun comprobarOpcion(opcion: String?){
         if (opcion == "MODIFICAR"){
             val nombreMarca = intent.getStringExtra("nombreMarca")
+            val marcaEditar = BaseDeDatos.tablaMarca?.consultarMarcaPorID(idItemSeleccionado)
             findViewById<TextView>(R.id.txt_form_marca).setText("Editar marca ${nombreMarca}")
-            findViewById<EditText>(R.id.txt_nombre_marca).setText(BbaseDatosMemoria.arregloBMarca[idItemSeleccionado].nombre)
-            findViewById<EditText>(R.id.txt_fecha_creacion).setText(BbaseDatosMemoria.arregloBMarca[idItemSeleccionado].fechaCreacion.toString())
-            val sw_servicioTecnico = BbaseDatosMemoria.arregloBMarca[idItemSeleccionado].servicioTecnico.toString()
+            findViewById<EditText>(R.id.txt_nombre_marca).setText(marcaEditar?.nombre)
+            findViewById<EditText>(R.id.txt_fecha_creacion).setText(marcaEditar?.fechaCreacion.toString())
+            val sw_servicioTecnico = marcaEditar?.servicioTecnico.toString()
             if (sw_servicioTecnico.toBoolean() == true){
                 findViewById<Switch>(R.id.sw_servicioTecnico).isChecked = true
             }
-            findViewById<EditText>(R.id.txt_contacto).setText(BbaseDatosMemoria.arregloBMarca[idItemSeleccionado].contacto)
+            findViewById<EditText>(R.id.txt_contacto).setText(marcaEditar?.contacto)
         }
     }
 }

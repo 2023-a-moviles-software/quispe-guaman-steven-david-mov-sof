@@ -20,7 +20,7 @@ import java.time.LocalDate
 
 class MarcaListView : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.O)
-    var arreglo = BbaseDatosMemoria.arregloBMarca
+    var arreglo = BaseDeDatos.tablaMarca?.obtenerTodasLasMarcas()?: emptyList()
     var idItemSeleccionado = -1
 
     @RequiresApi(Build.VERSION_CODES.O)
@@ -41,19 +41,18 @@ class MarcaListView : AppCompatActivity() {
 
                     if(nombre != null && fechaCreacion != null && servicioTecnico != null && contacto !=null){
                        if(opcion != "MODIFICAR"){
-                           BbaseDatosMemoria.arregloBMarca
-                               .add(
-                                   BMarca(arreglo.size+1,nombre, LocalDate.parse(fechaCreacion), servicioTecnico.toBoolean() ,
-                                       contacto)
-                               )
+                           BaseDeDatos.tablaMarca?.crearMarca(nombre, fechaCreacion, servicioTecnico , contacto)
                        }else {
-                           arreglo[idItemSeleccionado].nombre = nombre
-                           arreglo[idItemSeleccionado].fechaCreacion = LocalDate.parse(fechaCreacion)
-                           arreglo[idItemSeleccionado].servicioTecnico = servicioTecnico.toBoolean()
-                           arreglo[idItemSeleccionado].contacto = contacto
+                           BaseDeDatos.tablaMarca?.actualizarMarca(nombre, fechaCreacion, servicioTecnico, contacto, idItemSeleccionado)
                        }
                         //Actualización de la lista en pantalla
-                        val adaptador = findViewById<ListView>(R.id.lv_list_marca).adapter as ArrayAdapter<BMarca>
+                        val listViewMarca = findViewById<ListView>(R.id.lv_list_marca)
+                        val adaptador = listViewMarca.adapter as ArrayAdapter<BMarca>
+                        adaptador.clear()
+                        val marcasActualizadas = BaseDeDatos.tablaMarca?.obtenerTodasLasMarcas()
+                        if (marcasActualizadas != null){
+                            adaptador.addAll(marcasActualizadas)
+                        }
                         adaptador.notifyDataSetChanged()
                     }
                 }
@@ -64,12 +63,17 @@ class MarcaListView : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_marca_list_view)
+        //Crear primeras marcas
+        if (arreglo.isEmpty()){
+            BaseDeDatos.tablaMarca?.crearMarca("Asus", "1989-12-05", "true", "asus@contacto.com")
+            BaseDeDatos.tablaMarca?.crearMarca("Msi", "1995-08-11", "true", "msi@contacto.com")
+        }
         //Adaptador
         val listView = findViewById<ListView>(R.id.lv_list_marca)
         val adaptador = ArrayAdapter(
             this,   //Contexto
             android.R.layout.simple_list_item_1,
-            arreglo
+            BaseDeDatos.tablaMarca?.obtenerTodasLasMarcas()?: emptyList()
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
@@ -126,7 +130,7 @@ class MarcaListView : AppCompatActivity() {
             DialogInterface.OnClickListener { //Callback
                     dialog, which ->
                     //Eliminar marca seleccionada
-                    arreglo.removeAt(idItemSeleccionado)
+                    BaseDeDatos.tablaMarca?.eliminarMarca(idItemSeleccionado)
                     //Actualización de la lista en pantalla
                     val adaptador = findViewById<ListView>(R.id.lv_list_marca).adapter as ArrayAdapter<BMarca>
                     adaptador.notifyDataSetChanged()
@@ -155,7 +159,7 @@ class MarcaListView : AppCompatActivity() {
     ){
         val intentExplicito = Intent(this, clase)
         intentExplicito.putExtra("opcion","MODIFICAR")  //Operacion CRUD a realizar
-        intentExplicito.putExtra("nombreMarca",arreglo[idItemSeleccionado].nombre) //Nombre Marca a editar
+        intentExplicito.putExtra("nombreMarca",BaseDeDatos.tablaMarca?.consultarMarcaPorID(idItemSeleccionado)?.nombre) //Nombre Marca a editar
         intentExplicito.putExtra("idItemSeleccionado",idItemSeleccionado.toInt()) //Id Marca a editar
         //Enviar parametros
         callbackContenidoIntentExlicito.launch(intentExplicito)
@@ -168,7 +172,7 @@ class MarcaListView : AppCompatActivity() {
     ){
         val intent = Intent(this, clase)
         //Enviar parametros
-        intent.putExtra("idMarca", arreglo[idItemSeleccionado].idMarca)
+        intent.putExtra("idMarca", BaseDeDatos.tablaMarca?.consultarMarcaPorID(idItemSeleccionado)?.idMarca)
         startActivity(intent)
     }
 }

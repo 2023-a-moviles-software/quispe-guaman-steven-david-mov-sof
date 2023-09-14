@@ -35,7 +35,6 @@ class HFirebaseUIAuth : AppCompatActivity() {
         if(res.isNewUser == true){
             registrarUsuarioPorPrimeraVez(res)
         }
-
     }
 
     fun registrarUsuarioPorPrimeraVez(usuario: IdpResponse){/*usuario.email; usuario.phoneNumber; usuario.user.name*/}
@@ -80,6 +79,4 @@ class HFirebaseUIAuth : AppCompatActivity() {
         tvBienvenido.text = "Bienvenido"
         FirebaseAuth.getInstance().signOut()
     }
-
-
 }

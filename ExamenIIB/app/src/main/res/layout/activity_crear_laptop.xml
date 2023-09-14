@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CrearLaptop">
+
+    <TextView
+        android:id="@+id/txt_form_laptop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:text="Añadir laptop"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/txt_modelo"
+        app:layout_constraintEnd_toEndOf="@+id/txt_modelo"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="@+id/txt_modelo" />
+
+    <EditText
+        android:id="@+id/txt_modelo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="Modelo:"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/txt_precio"
+        app:layout_constraintEnd_toEndOf="@+id/txt_precio"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_precio" />
+
+    <EditText
+        android:id="@+id/txt_precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="Precio:"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/txt_fecha_lanzamiento"
+        app:layout_constraintEnd_toEndOf="@+id/txt_fecha_lanzamiento"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txt_fecha_lanzamiento" />
+
+    <EditText
+        android:id="@+id/txt_fecha_lanzamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:ems="10"
+        android:hint="Fecha de lanzamiento:"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@+id/sw_en_produccion"
+        app:layout_constraintEnd_toEndOf="@+id/sw_en_produccion"
+        app:layout_constraintHorizontal_bias="0.478"
+        app:layout_constraintStart_toStartOf="@+id/sw_en_produccion" />
+
+    <Button
+        android:id="@+id/btn_crear_laptop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.701" />
+
+    <Switch
+        android:id="@+id/sw_en_produccion"
+        android:layout_width="210dp"
+        android:layout_height="42dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/switch_en_produccion"
+        app:layout_constraintBottom_toTopOf="@+id/btn_crear_laptop"
+        app:layout_constraintEnd_toEndOf="@+id/btn_crear_laptop"
+        app:layout_constraintStart_toStartOf="@+id/btn_crear_laptop" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

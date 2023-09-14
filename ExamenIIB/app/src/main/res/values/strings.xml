@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Examen IIB</string>
+    <string name="switch_servicio_tecnico">Servicio Técnico: </string>
+    <string name="switch_en_produccion">En producción: </string>
+</resources>

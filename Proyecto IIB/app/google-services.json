@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "54465009556",
+    "project_id": "gestion-de-finanzas-c216c",
+    "storage_bucket": "gestion-de-finanzas-c216c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:54465009556:android:cc76ddd5d114ab19216181",
+        "android_client_info": {
+          "package_name": "com.example.gestionfinanzas"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCLuZ7CEH3-B2aEgydLzMlmO7T8eMlc00"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
